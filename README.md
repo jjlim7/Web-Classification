@@ -15,7 +15,7 @@ This is an overview of a typical machine learning pipeline. To prepare my data f
 
 ![](class-distribution.png)
 
-</br>
+
 
 ## Data Cleaning
 
@@ -58,7 +58,7 @@ def word_lemmatization(text):
   
   return [WordNetLemmatizer().lemmatize(word, pos=get_pos(word)) for word in nltk.word_tokenize(text)]
 ```
-</br></br></br></br>
+
 
 ## Train-Test Split
 
