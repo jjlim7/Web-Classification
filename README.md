@@ -2,23 +2,23 @@
 During my internship at Jewel Paymentech, I undertook an independent data science project to build a machine learning model that performs multi-class classfication of websites based on its text data.
 
 ## Project Objective
-------
+
 The objective of this project is to assist our clients in identifying various categories of potentially illegal or fraudulent website content such as pornography, gambling and multi-level marketing (based on the website's text content).
 
 ## Machine Learning Pipeline
-------
+
 This is an overview of a typical machine learning pipeline. To prepare my data for model training, I will be cleaning the text and perform text preprocessing.
 
 ![](machine-learning-pipeline.png)
 
 ## Data Exploration
-------
+
 ![](class-distribution.png)
 
 </br>
 
 ## Data Cleaning
-------
+
 Clean text to remove irrelevant text such as non-letters, whitespace, HTML tags, and stopwords. Stopwords are commonly used words such as 'a', 'am', 'as', etc.
 ```python
 def clean_text(raw_text, remove_stopwords=True):
@@ -37,7 +37,7 @@ def clean_text(raw_text, remove_stopwords=True):
 ```
 
 ## Text Processing: Word Lemmatization
-------
+
 Word lemmatization is a NLP technique used to transform a word into its root form, allowing grouping of similar words. E.g. the root form of 'walks', 'walked', 'walking' is equivalent to 'walk'.
 ```python
 def word_lemmatization(text):
@@ -61,7 +61,7 @@ def word_lemmatization(text):
 </br></br></br></br>
 
 ## Train-Test Split
-------
+
 Splitting the data into training and testing sets is essential for evaluating predictive model's performance. The training set will be used to train the model while the testing data is used to evaluate the model's performance.
 ```python
 # Train-Test Split (70:30)
@@ -69,7 +69,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 ```
 
 ## Machine Learning
-------
+
 Term Frequency-Inverse Document Frequency (TF-IDF) is an information retrieval technique used to normalize the frequencies of word occurences by scaling down the impact of words that frequently appears. 
 
 The machine learning algorithm I used is _Linear Support Vector Classifier_.
@@ -82,7 +82,7 @@ svm = OneVsRestClassifier(LinearSVC(penalty='l2', C=1))
 ```
 
 ## Hyperparameter Optimization
-------
+
 Performs search on various hyperparameters to find the optimal set of parameters that enhances the model's performance.
 ```python
 # Model Pipeline
@@ -107,7 +107,7 @@ grid = GridSearchCV(clf_pipeline, parameters, n_jobs=-1, cv=3, scoring='f1_weigh
 ```
 
 ## Model Evaluation
-------
+
 Metrics used to evaluate a classification model include precision,recall, and f1-score. The following below is a normalized confusion matrix which describes the performance of a classification model for each class.
 
 Based on the confusion matrix, the model performs generally well on most classes except for the 'Trial' class. This is due to the small amount of samples we have for the 'Trial' class. As such, to further improve the model performance, it is suggested to collect more training data on the 'Trial' class.
