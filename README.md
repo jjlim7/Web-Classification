@@ -7,15 +7,14 @@ The objective of this project is to assist our clients in identifying various ca
 
 ## Machine Learning Pipeline
 
-This is an overview of a typical machine learning pipeline. To prepare my data for model training, I will be cleaning the text and perform text preprocessing.
+This is an overview of a typical machine learning pipeline. To prepare my data for model training, data cleaning and text preprocessing will be performed to optimize my dataset. The features will then be extracted through an information retrieval technique known as Term Frequency-Inverse Document Frequency (TF-IDF). Lastly, machine learning algorithms such as naive bayes and support vector machines will be applied on the features extracted to perform predictions.
 
 ![](machine-learning-pipeline.png)
 
 ## Data Exploration
+The following shows a class distribution of the dataset. As seen in the graph, classes such as 'Trial', 'Tms', 'Prostitution' are relatively low compared to others. This may result in biases in our machine learning model. Hence, it is suggested that more data are to be collected for such classes.
 
 ![](class-distribution.png)
-
-
 
 ## Data Cleaning
 
@@ -59,7 +58,6 @@ def word_lemmatization(text):
   return [WordNetLemmatizer().lemmatize(word, pos=get_pos(word)) for word in nltk.word_tokenize(text)]
 ```
 
-
 ## Train-Test Split
 
 Splitting the data into training and testing sets is essential for evaluating predictive model's performance. The training set will be used to train the model while the testing data is used to evaluate the model's performance.
@@ -70,9 +68,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 
 ## Machine Learning
 
-Term Frequency-Inverse Document Frequency (TF-IDF) is an information retrieval technique used to normalize the frequencies of word occurences by scaling down the impact of words that frequently appears. 
-
-The machine learning algorithm I used is _Linear Support Vector Classifier_.
+Term Frequency-Inverse Document Frequency (TF-IDF) is an information retrieval technique used to normalize the frequencies of word occurences by scaling down the impact of words that frequently appears. The machine learning algorithm used here is _Linear Support Vector Classifier_.
 ```python
 # TF-IDF Vectorizer
 tfidf = TfidfVectorizer(encoding='latin-1', stop_words='english', lowercase=True, smooth_idf=False, sublinear_tf=True, use_idf=True))
